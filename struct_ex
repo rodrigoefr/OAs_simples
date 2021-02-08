@@ -1,0 +1,157 @@
+#include <stdio.h>
+
+struct {
+  int x, y;
+} p1, p2;
+
+void main()
+{
+  p1.x = 10;
+
+  printf("%d", p1.x);
+
+}
+
+
+-------------------------------------------------------------
+
+#include <stdio.h>
+
+struct {
+  int x, y;
+} p1, p2;
+
+
+
+void main(){
+
+  p1.y = 100;
+
+  p2 = p1;
+
+  printf("%d", p2.y);
+
+}
+
+-------------------------------------------------------------
+
+#include <stdio.h>
+
+struct aluno {
+	char *nome;	int idade;
+} a1, a2;
+
+void main(){
+  a1.nome = "Afranio";
+  a1.idade = 32;
+  a2 = a1;
+
+  printf("%s", a2.nome);
+}
+
+-------------------------------------------------------------
+
+#include <stdio.h>
+
+struct aluno {
+	char *nome;		/* ponteiro 4 bytes */
+	short idade;		/* 2 bytes */
+	char matricula[8];	/* array 8 bytes */
+};
+
+void main(){
+
+  struct aluno al;
+  al.nome = "Marta";
+  al.idade = 30;
+  strcpy(al.matricula, "00/0001");
+
+  printf("%s", al.nome);
+  //printf("xx");
+
+}
+
+-------------------------------------------------------------
+
+#include <stdio.h>
+
+
+void main(){
+  int *pi = (int *) malloc (sizeof(int)); //aloca espaço para um inteiro
+  *pi = 8;
+  printf("%d \n", *pi);
+
+  int *ai = (int *) calloc (3, sizeof(int)); /* aloca espaço para um array de n inteiros */
+
+  *(ai+1)=11;
+  printf("%d \n", *(ai+1));
+
+  free(ai);  /* libera todo o array */
+  free(pi);  /* libera o inteiro alocado */
+
+  printf(" ");
+}
+
+-------------------------------------------------------------
+
+#include <stdio.h>
+
+typedef struct {
+  char nome[100];
+  int idade;
+} pessoa;
+
+main(){
+  pessoa joao;
+  pessoa *p = &joao;
+  strcpy(joao.nome, "joao da silva");
+
+  joao.idade = 20;
+  (*p).idade = 18;
+
+  printf("%s, %d\n", (*p).nome, (*p).idade);
+  printf("%s, %d\n", joao.nome, joao.idade);
+}
+
+-------------------------------------------------------------
+#include <stdio.h>
+
+typedef struct {
+  char nome[100];
+  int idade;
+} pessoa;
+
+main(){
+  pessoa joao;
+  pessoa *p = &joao;
+  strcpy(joao.nome, "joao da silva");
+  joao.idade = 20;
+  printf("%s, %d\n", p->nome, p->idade);
+  p->idade = 18;
+  printf("%s, %d\n", joao.nome, joao.idade);
+}
+-------------------------------------------------------------
+#include <stdio.h>
+
+typedef struct pessoa pessoa;
+struct pessoa{
+  char nome[100];
+  int idade;
+  pessoa *pai;
+};
+
+main(){
+  pessoa filho, pai;
+  pessoa *p = &filho;
+
+  strcpy(filho.nome, "joao filho");
+  filho.idade = 20;
+
+  strcpy(pai.nome, "pedro pai da silva");
+  pai.idade = 45;
+  filho.pai = &pai;
+
+  printf("%s, %d\n", filho.pai->nome, filho.pai->idade);
+  printf("%s, %d\n", p->pai->nome, p->pai->idade);
+  printf("%s, %d\n", filho.nome, filho.idade);
+}

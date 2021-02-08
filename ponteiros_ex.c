@@ -18,9 +18,6 @@ void main()
   //printf("B: %d, C: %d", b, c);
 }
 
-// https://www.inf.pucrs.br/~pinho/PRGSWB/Ponteiros/ponteiros.html
-// http://linguagemc.com.br/ponteiros-em-c/
-// https://www.ime.usp.br/~pf/algoritmos/aulas/pont.html
 
 
 

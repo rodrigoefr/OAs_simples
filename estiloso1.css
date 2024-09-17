@@ -1,0 +1,11 @@
+#pr1{
+    text-align: center;
+    color:red;
+}
+
+.center{
+    text-align: center;
+    color: blueviolet;
+    text-decoration: underline;
+    background-color: aquamarine;
+}
